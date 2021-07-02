@@ -1,11 +1,23 @@
 services:
-  nats_test:
-    build: .
-    links:
-      - nats
-    environment:
-      - NATS=nats
   nats:
     image: nats
     ports:
       - "4222:4222"
+  publisher:
+    build:
+      context: .
+      args:
+        BINARY: publisher
+    links:
+      - nats
+    environment:
+      - NATS=nats
+  subscriber:
+    build:
+      context: .
+      args:
+        BINARY: subscriber
+    links:
+      - nats
+    environment:
+      - NATS=nats
