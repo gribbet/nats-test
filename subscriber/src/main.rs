@@ -7,8 +7,9 @@ fn main() -> std::io::Result<()> {
     let nats_url = &std::env::var("NATS").unwrap_or("localhost".to_string());
     let system = System::new(nats_url)?;
 
-    loop {
-        let measurement = system.receive::<Measurement>(&"temperature")?;
-        println!("Received {:?}", measurement);
-    }
+    system
+        .subscribe::<Measurement>(&"temperature")?
+        .for_each(|measurement| println!("Received {:?}", measurement));
+
+    Ok(())
 }

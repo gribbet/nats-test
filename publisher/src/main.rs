@@ -9,7 +9,7 @@ fn main() -> std::io::Result<()> {
 
     loop {
         let measurement = Measurement { temperature: 1.0 };
-        system.send(&"temperature", &measurement)?;
+        system.publish(&"temperature", &measurement)?;
         println!("Published {:?}", measurement);
         std::thread::sleep(std::time::Duration::from_millis(200))
     }
