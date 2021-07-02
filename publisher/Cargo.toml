@@ -4,4 +4,6 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
-common = { path = "../common" }
+data = { path = "../data" }
+system = { path = "../system" }
+rand = "0.8.4"

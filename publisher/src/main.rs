@@ -1,15 +1,16 @@
-use common::Measurement;
-use common::System;
+use data::Position;
+use system::System;
 
 fn main() -> std::io::Result<()> {
-    println!("Publisher");
-
     let system = System::new()?;
 
     loop {
-        let measurement = Measurement { temperature: 1.0 };
-        system.publish(&"temperature", &measurement)?;
-        println!("Published {:?}", measurement);
+        let position = Position {
+            x: rand::random::<f64>(),
+            y: rand::random::<f64>(),
+        };
+        system.publish(&"position", &position)?;
+        println!("Published {:?}", position);
         std::thread::sleep(std::time::Duration::from_millis(200))
     }
 }

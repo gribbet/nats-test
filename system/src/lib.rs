@@ -1,9 +1,4 @@
-use serde::{de::DeserializeOwned, Deserialize, Serialize};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Measurement {
-    pub temperature: f64,
-}
+use serde::{de::DeserializeOwned, Serialize};
 
 pub struct System {
     connection: nats::Connection,

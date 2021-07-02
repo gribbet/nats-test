@@ -1,12 +1,12 @@
-use common::Measurement;
-use common::System;
+use data::Position;
+use system::System;
 
 fn main() -> std::io::Result<()> {
     let system = System::new()?;
-    let measurements = system.subscribe::<Measurement>(&"temperature")?;
+    let positions = system.subscribe::<Position>(&"position")?;
 
-    for measurement in measurements {
-        println!("Received {:?}", measurement);
+    for position in positions {
+        println!("Received {:?}", position);
     }
 
     Ok(())

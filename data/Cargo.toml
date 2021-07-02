@@ -1,10 +1,8 @@
 [package]
-name = "common"
+name = "data"
 version = "0.1.0"
 edition = "2018"
 
 [dependencies]
-nats = "0.9.18" 
 serde = { version = "1.0.126", features = ["derive"] }
-bincode = "1.3.3"
 
