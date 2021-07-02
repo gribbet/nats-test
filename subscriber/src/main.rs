@@ -2,13 +2,12 @@ use common::Measurement;
 use common::System;
 
 fn main() -> std::io::Result<()> {
-    println!("Subscriber");
-
     let system = System::new()?;
+    let measurements = system.subscribe::<Measurement>(&"temperature")?;
 
-    system
-        .subscribe::<Measurement>(&"temperature")?
-        .for_each(|measurement| println!("Received {:?}", measurement));
+    for measurement in measurements {
+        println!("Received {:?}", measurement);
+    }
 
     Ok(())
 }
