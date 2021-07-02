@@ -4,8 +4,7 @@ use common::System;
 fn main() -> std::io::Result<()> {
     println!("Subscriber");
 
-    let nats_url = &std::env::var("NATS").unwrap_or("localhost".to_string());
-    let system = System::new(nats_url)?;
+    let system = System::new()?;
 
     system
         .subscribe::<Measurement>(&"temperature")?

@@ -4,8 +4,7 @@ use common::System;
 fn main() -> std::io::Result<()> {
     println!("Publisher");
 
-    let nats_url = &std::env::var("NATS").unwrap_or("localhost".to_string());
-    let system = System::new(nats_url)?;
+    let system = System::new()?;
 
     loop {
         let measurement = Measurement { temperature: 1.0 };

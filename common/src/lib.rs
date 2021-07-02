@@ -10,7 +10,8 @@ pub struct System {
 }
 
 impl System {
-    pub fn new(nats_url: &str) -> std::io::Result<System> {
+    pub fn new() -> std::io::Result<System> {
+        let nats_url = &std::env::var("NATS").unwrap_or("localhost".to_string());
         Ok(System {
             connection: nats::connect(nats_url)?,
         })
